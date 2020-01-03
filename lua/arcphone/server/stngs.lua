@@ -59,6 +59,7 @@ function ARCPhone.SettingsReset() --DO NOT EDIT THIS!!!!
 	ARCPhone.Settings["phone_clock_cycle"] = false
 	ARCPhone.Settings["override_text_chat"] = false
 	ARCPhone.Settings["override_voice_chat"] = false
+	ARCPhone.Settings["disable_beta_message"] = false
 end
 --
 ARCPhone.SettingsReset()
