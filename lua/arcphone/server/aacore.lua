@@ -709,8 +709,13 @@ function ARCPhone.Load()
 		
 		ARCLib.AddonLoadSettings("ARCPhone",backward)
 		ARCLib.AddonLoadSpecialSettings("ARCPhone")
-		--TODO: Language support
 		
+		--TODO: Update translation url later on
+		ARCLib.LoadDefaultLanguages("ARCPhone","https://justplayer.de/language/arcphone_defaults.json",function(langChoices)
+			ARCLib.AddonAddSettingMultichoice("ARCPhone","language",langChoices)
+			ARCLib.SetAddonLanguage("ARCPhone")
+		end)
+
 		ARCPhone.EmergencyNumbers = {}
 		
 		local numbers = {}

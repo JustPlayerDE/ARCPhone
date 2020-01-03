@@ -60,6 +60,7 @@ function ARCPhone.SettingsReset() --DO NOT EDIT THIS!!!!
 	ARCPhone.Settings["override_text_chat"] = false
 	ARCPhone.Settings["override_voice_chat"] = false
 	ARCPhone.Settings["disable_beta_message"] = false
+	ARCPhone.Settings["language"] = "en_ca"
 end
 --
 ARCPhone.SettingsReset()
