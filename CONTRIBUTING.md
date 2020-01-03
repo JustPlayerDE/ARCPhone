@@ -6,7 +6,7 @@ Here are some basic things to keep in mind
 
 ## Things that I've always wanted to do but never got around to it.
 * **APP API NEEDS AN OVERHAULED AND MUST BE DOCUMENTED**
-* Make the addon compatible with the ARCLib translation system
+* Make the addon compatible with the ARCLib translation system [X]
 * Better phone customizability
 * Ability to view images in text messages fullscreen.
 * Headset - Not having a headset will end your call if you lock your phone (currently everyone has an "invisible headset")
