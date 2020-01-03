@@ -126,3 +126,4 @@ ARCPhone.SettingsDesc["phone_clock_cycle"] = "If enabled, the phone clock will d
 ARCPhone.SettingsDesc["override_text_chat"] = "This forces in-game messages to only be seen by nearby players. (Unless in an ARCPhone call) Only enable this if your gamemode doesn't support this natively."
 ARCPhone.SettingsDesc["override_voice_chat"] = "This forces all in-game voice chat to be 3D and can only be heard by nearby players. (Unless in an ARCPhone call) Only enable this if your gamemode doesn't support this natively."
 ARCPhone.SettingsDesc["override_chat_distance"] = "The distance before players will"
+ARCPhone.SettingsDesc["disable_beta_message"] = "This will disable the BETA warning in your phone. (This will not change the current stage of ARCPhone tho)"
