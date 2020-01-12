@@ -104,7 +104,7 @@ function SWEP:Deploy()
 		net.SendToServer()
 	end
 	timer.Simple(1.5,function()
-		if self.Owner:GetActiveWeapon() == self then
+		if IsValid(self) and self.Owner:GetActiveWeapon() == self then
 			self:SendWeaponAnimTime( ACT_VM_IDLE , 0.2 )
 		end
 	end)
