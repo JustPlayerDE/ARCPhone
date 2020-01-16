@@ -1,8 +1,8 @@
 Here are some basic things to keep in mind
 
-## ARCSlots design goals
-* ARCSlots should be as user friendly as possible
-* ARCSlots should be as configurable as possible _in-game_ without the need for configuration files:
+## ARCPhone design goals
+* ARCPhone should be as user friendly as possible
+* ARCPhone should be as configurable as possible _in-game_ without the need for configuration files:
 
 ## Things that I've always wanted to do but never got around to it.
 * **APP API NEEDS AN OVERHAULED AND MUST BE DOCUMENTED**
