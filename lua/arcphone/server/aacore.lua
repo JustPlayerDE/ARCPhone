@@ -715,8 +715,7 @@ function ARCPhone.Load()
 		ARCLib.AddonLoadSettings("ARCPhone",backward)
 		ARCLib.AddonLoadSpecialSettings("ARCPhone")
 		
-		--TODO: Update translation url later on
-		ARCLib.LoadDefaultLanguages("ARCPhone","https://justplayer.de/language/arcphone_defaults.json",function(langChoices)
+		ARCLib.LoadDefaultLanguages("ARCPhone","https://raw.githubusercontent.com/JustPlayerDE/aritzcracker-addon-translations/master/default_arcphone_languages.json",function(langChoices)
 			ARCLib.AddonAddSettingMultichoice("ARCPhone","language",langChoices)
 			ARCLib.SetAddonLanguage("ARCPhone")
 		end)
