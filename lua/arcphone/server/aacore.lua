@@ -443,6 +443,11 @@ function ARCPhone.AddToCall(caller,reciever)
 end
 
 function ARCPhone.SendTextMsg(tonum,fromnum,msg)
+
+	if string.len( msg ) <= 0 then -- We may have bigger problems if it is less than zero
+		-- ARCPhone.SendTextMsg(fromnum,tonum,"AUTO REPLY:\nPlease dont send empty messages. :(")
+		return
+	end
 	if ARCPhone.EmergencyNumbers[tonum] then
 		for k,v in ipairs(ARCPhone.SpecialSettings.EmergencyNumbers[tonum]) do
 			local plys = team.GetPlayers( _G[v] or TEAM_UNASSIGNED )
