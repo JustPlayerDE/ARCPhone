@@ -95,7 +95,7 @@ ARCPhone.Msgs.CommandOutput.AntennasDSaved = "Antennas detached from map!"
 ARCPhone.Msgs.CommandOutput.AntennasDError = "An error occurred while detaching Antennas from map."
 
 ARCPhone.Msgs.CommandOutput.AntennasRespawning = "Re-spawning Map-Based Antennas..."
-ARCPhone.Msgs.CommandOutput.AntennasRespawn = "Map-Based Antennas re-spawned!"
+ARCPhone.Msgs.CommandOutput.AntennasRespawned = "Map-Based Antennas re-spawned!"
 
 ARCPhone.Msgs.CommandOutput.AntennasSpawnError = "No Antennas associated with this map. (Non-existent/Currupt file)"
 

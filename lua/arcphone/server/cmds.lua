@@ -114,7 +114,7 @@ ARCPhone.Commands = { --Make sure they are less then 16 chars long.$
 			if !ARCPhone.Loaded then ARCPhone.MsgCL(ply,ARCPhone.Msgs.CommandOutput.SysReset) return end
 			ARCPhone.MsgCL(ply,ARCPhone.Msgs.CommandOutput.AntennasRespawning)
 			if ARCPhone.SpawnAntennas() then
-				ARCPhone.MsgCL(ply,ARCPhone.Msgs.CommandOutput.AntennasRespawn)
+				ARCPhone.MsgCL(ply,ARCPhone.Msgs.CommandOutput.AntennasRespawned)
 			else
 				ARCPhone.MsgCL(ply,ARCPhone.Msgs.CommandOutput.AntennasSpawnError)
 			end
