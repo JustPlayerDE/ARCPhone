@@ -101,6 +101,10 @@ ARCPhone.Msgs.CommandOutput.AntennasSpawnError = "No Antennas associated with th
 
 ARCPhone.Msgs.Items.Phone = "Phone"
 
+ARCPhone.Msgs.Phone.CallNoNumber = "No Phone number specified."
+ARCPhone.Msgs.Phone.CallNoCall = "No call running or call has not been established."
+ARCPhone.Msgs.Phone.CallInvalid = "Invalid operation"
+
 ARCPhone.Msgs.Time.nd = "and"
 ARCPhone.Msgs.Time.second = "second"
 ARCPhone.Msgs.Time.seconds = "seconds"
