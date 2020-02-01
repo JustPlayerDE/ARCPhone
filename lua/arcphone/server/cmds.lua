@@ -7,7 +7,7 @@ ARCPhone.Loaded = false
 ARCPhone.Commands = { --Make sure they are less then 16 chars long.$
 	["about"] = {
 		command = function(ply,args) 
-			if !ARCPhone.Loaded then ARCPhone.MsgCL(ply,"System reset required!") return end
+			if !ARCPhone.Loaded then ARCPhone.MsgCL(ply,ARCPhone.Msgs.CommandOutput.SysReset) return end
 			ARCPhone.MsgCL(ply,"ARitz Cracker Phone v"..ARCPhone.Version.." Last updated on "..ARCPhone.Update )
 			ARCPhone.MsgCL(ply,"© Copyright 2015-2016 Aritz Beobide-Cardinal (ARitz Cracker) All rights reserved.")
 		end, 
@@ -37,7 +37,7 @@ ARCPhone.Commands = { --Make sure they are less then 16 chars long.$
 	},
 	["help"] = {
 		command = function(ply,args) 
-			if !ARCPhone.Loaded then ARCPhone.MsgCL(ply,"System reset required!") return end
+			if !ARCPhone.Loaded then ARCPhone.MsgCL(ply,ARCPhone.Msgs.CommandOutput.SysReset) return end
 			if args[1] then
 				if ARCPhone.Commands[args[1]] then
 					ARCPhone.MsgCL(ply,args[1]..tostring(ARCPhone.Commands[args[1]].usage).." - "..tostring(ARCPhone.Commands[args[1]].description))
@@ -81,12 +81,12 @@ ARCPhone.Commands = { --Make sure they are less then 16 chars long.$
 	},
 	["antenna_save"] = {
 		command = function(ply,args)
-			if !ARCPhone.Loaded then ARCPhone.MsgCL(ply,"System reset required!") return end
-			ARCPhone.MsgCL(ply,"Saving Antennas to map...")
+			if !ARCPhone.Loaded then ARCPhone.MsgCL(ply,ARCPhone.Msgs.CommandOutput.SysReset) return end
+			ARCPhone.MsgCL(ply, ARCPhone.Msgs.CommandOutput.AntennasSaving)
 			if ARCPhone.SaveAntennas() then
-				ARCPhone.MsgCL(ply,"Antennas saved onto map!")
+				ARCPhone.MsgCL(ply,ARCPhone.Msgs.CommandOutput.AntennasSaved)
 			else
-				ARCPhone.MsgCL(ply,"An error occurred while saving the Antennas onto the map.")
+				ARCPhone.MsgCL(ply,ARCPhone.Msgs.CommandOutput.AntennasError)
 			end
 		end, 
 		usage = "",
@@ -96,12 +96,12 @@ ARCPhone.Commands = { --Make sure they are less then 16 chars long.$
 	},
 	["antenna_unsave"] = {
 		command = function(ply,args)
-			if !ARCPhone.Loaded then ARCPhone.MsgCL(ply,"System reset required!") return end
-			ARCPhone.MsgCL(ply,"Detatching Antennas from map...")
+			if !ARCPhone.Loaded then ARCPhone.MsgCL(ply,ARCPhone.Msgs.CommandOutput.SysReset) return end
+			ARCPhone.MsgCL(ply, ARCPhone.Msgs.CommandOutput.AntennasDetatching)
 			if ARCPhone.UnSaveAntennas() then
-				ARCPhone.MsgCL(ply,"Antennas Detached from map!")
+				ARCPhone.MsgCL(ply,ARCPhone.Msgs.CommandOutput.AntennasDSaved)
 			else
-				ARCPhone.MsgCL(ply,"An error occurred while detaching Antennas from map.")
+				ARCPhone.MsgCL(ply,ARCPhone.Msgs.CommandOutput.AntennasDError)
 			end
 		end, 
 		usage = "",
@@ -111,12 +111,12 @@ ARCPhone.Commands = { --Make sure they are less then 16 chars long.$
 	},
 	["antenna_respawn"] = {
 		command = function(ply,args) 
-			if !ARCPhone.Loaded then ARCPhone.MsgCL(ply,"System reset required!") return end
-			ARCPhone.MsgCL(ply,"Spawning Map-Based Antennas...")
+			if !ARCPhone.Loaded then ARCPhone.MsgCL(ply,ARCPhone.Msgs.CommandOutput.SysReset) return end
+			ARCPhone.MsgCL(ply,ARCPhone.Msgs.CommandOutput.AntennasRespawning)
 			if ARCPhone.SpawnAntennas() then
-				ARCPhone.MsgCL(ply,"Map-Based Antennas Spawned!")
+				ARCPhone.MsgCL(ply,ARCPhone.Msgs.CommandOutput.AntennasRespawn)
 			else
-				ARCPhone.MsgCL(ply,"No Antennas associated with this map. (Non-existent/Currupt file)")
+				ARCPhone.MsgCL(ply,ARCPhone.Msgs.CommandOutput.AntennasSpawnError)
 			end
 		end, 
 		usage = "",
@@ -135,7 +135,7 @@ ARCPhone.Commands = { --Make sure they are less then 16 chars long.$
 	},
 	["print_json"] = {
 		command = function(ply,args) 
-			if !ARCPhone.Loaded then ARCPhone.MsgCL(ply,"System reset required!") return end
+			if !ARCPhone.Loaded then ARCPhone.MsgCL(ply,ARCPhone.Msgs.CommandOutput.SysReset) return end
 			local translations = {}
 			translations.errmsgs = ARCPHONE_ERRORSTRINGS
 			translations.msgs = ARCPhone.Msgs
@@ -158,9 +158,9 @@ ARCPhone.Commands = { --Make sure they are less then 16 chars long.$
 			ARCPhone.Load()
 			timer.Simple(math.Rand(4,5),function()
 				if ARCPhone.Loaded then
-					ARCPhone.MsgCL(ply,"System resetted!")
+					ARCPhone.MsgCL(ply, ARCPhone.Msgs.CommandOutput.ResetYes)
 				else
-					ARCPhone.MsgCL(ply,"Error. Check server console for details.")
+					ARCPhone.MsgCL(ply, ARCPhone.Msgs.CommandOutput.ResetNo)
 				end
 			end)
 		end, 

@@ -84,7 +84,20 @@ ARCPhone.Msgs.CommandOutput.SettingsSaved = "Settings have been saved!"
 ARCPhone.Msgs.CommandOutput.SettingsError = "Error saving settings."
 
 ARCPhone.Msgs.CommandOutput.ResetYes = "System reset!"
-ARCPhone.Msgs.CommandOutput.ResetNo = "Error. Check server console for details. Or look at the latest system log located in garrysmod/data/_arcslots on the server."
+ARCPhone.Msgs.CommandOutput.ResetNo = "Error. Check server console for details. Or look at the latest system log located in garrysmod/data/_arcphone_server/syslogs on the server."
+
+ARCPhone.Msgs.CommandOutput.AntennasSaving = "Saving Antennas to map..."
+ARCPhone.Msgs.CommandOutput.AntennasSaved = "Antennas saved onto map!"
+ARCPhone.Msgs.CommandOutput.AntennasError = "An error occurred while saving the Antennas onto the map."
+
+ARCPhone.Msgs.CommandOutput.AntennasDetatching = "Detatching Antennas from map..."
+ARCPhone.Msgs.CommandOutput.AntennasDSaved = "Antennas detached from map!"
+ARCPhone.Msgs.CommandOutput.AntennasDError = "An error occurred while detaching Antennas from map."
+
+ARCPhone.Msgs.CommandOutput.AntennasRespawning = "Re-spawning Map-Based Antennas..."
+ARCPhone.Msgs.CommandOutput.AntennasRespawn = "Map-Based Antennas re-spawned!"
+
+ARCPhone.Msgs.CommandOutput.AntennasSpawnError = "No Antennas associated with this map. (Non-existent/Currupt file)"
 
 ARCPhone.Msgs.Items.Phone = "Phone"
 
