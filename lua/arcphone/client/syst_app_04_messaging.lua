@@ -3,6 +3,7 @@
 -- © Copyright 2016-2017 Aritz Beobide-Cardinal All rights reserved.
 
 -- TODO: STOP MESSING WITH APP.Tiles and do the stuff properly!!
+-- TODO: Translation
 local APP = ARCPhone.NewAppObject()
 APP.Name = "Messaging"
 APP.Author = "ARitz Cracker"
@@ -21,6 +22,7 @@ end
 function APP:AttachPhoto(photo)
 	local imagetag = "{{IMG\""..photo.."\"IMG}}"
 	if string.find( self.Tiles[self.TextInputIcon]:GetText(), imagetag ,1 ,false) then
+            -- TODO: Translation
 		ARCPhone.PhoneSys:AddMsgBox("Duplicate image","You cannot attach 2 of the same image","warning")
 	else
 		self.Tiles[self.TextInputIcon]:SetText(self.Tiles[self.TextInputIcon]:GetText()..imagetag)
@@ -69,6 +71,7 @@ end
 
 function APP:OpenConvo(num,previewText)
 	table.Empty(self.Tiles)
+            -- TODO: Translation
 	self:AddMenuOption("Attach Photo",self.Phone.ChoosePhoto,self.Phone,self.AttachPhoto,self)
 	self.Home = false
 	self.OpenNumber = num
@@ -107,6 +110,7 @@ function APP:OpenConvo(num,previewText)
 	self.TextInputIcon = len
 	self.Tiles[len] = ARCPhone.NewAppTextInputTile(self,previewText or "",true,118)
 	self.Tiles[len].ID = len
+            -- TODO: Translation
 	self.Tiles[len]:SetPlaceholder("Enter your message")
 	if len > 1 then
 		self.Tiles[len].y = self.Tiles[len-1].y + self.Tiles[len-1].h + 4
@@ -132,6 +136,7 @@ function APP:OpenConvo(num,previewText)
 	self.Tiles[len].h = 18
 	self.Tiles[len].color = self.Phone.Settings.Personalization.CL_22_PopupAccept
 	self.Tiles[len].drawfunc = function(tile,x,y)
+            -- TODO: Translation
 		draw.SimpleText("SEND", "ARCPhone", x+tile.w*0.5, y+tile.h*0.5, self.Phone.Settings.Personalization.CL_23_PopupAcceptText, TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER) 
 	end
 	--self.Tiles[len].OnPressed = function(tile)
@@ -152,10 +157,12 @@ function APP:ForegroundThink()
 end
 
 function APP:NewConvo()
+            -- TODO: Translation
 	Derma_StringRequest("ARCPhone","Enter the phone number of the person you want to text","",function( text ) 
 		if ARCPhone.IsValidPhoneNumber(text) then
 			self:OpenConvo(text)
 		else
+            -- TODO: Translation
 			ARCPhone.PhoneSys:AddMsgBox("Invalid phone number","The phone number you entered was invalid","warning")
 		end
 	end)
@@ -165,6 +172,7 @@ function APP:Init()
 	self.Home = true
 	self.Tiles = {}
 	self.InConvo = false
+            -- TODO: Translation
 	self:RemoveMenuOption("Attach Photo")
 	self.OpenNumber = ""
 	
@@ -204,6 +212,7 @@ function APP:Init()
 	self.Tiles[len].h = 18
 	self.Tiles[len].color = self.Phone.Settings.Personalization.CL_06_TertiaryColour
 	self.Tiles[len].drawfunc = function(tile,x,y)
+            -- TODO: Translation
 		draw.SimpleText("**New Conversation**", "ARCPhone", x+tile.w*0.5, y+tile.h*0.5, self.Phone.Settings.Personalization.CL_08_TertiaryText, TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER) 
 	end
 	self.Tiles[len].OnPressed = function(tile)
@@ -212,6 +221,7 @@ function APP:Init()
 	self.Tiles[len].OnUnPressed = function(tile)
 		tile.color = self.Phone.Settings.Personalization.CL_06_TertiaryColour
 		--tile.App:NewConvo()
+            -- TODO: Translation
 		ARCPhone.PhoneSys:AddMsgBox("COMING SOON!","Please select a person to from your contact list (This button will have you choose between a contact and a new number in a future update)")
 	end
 	--[[

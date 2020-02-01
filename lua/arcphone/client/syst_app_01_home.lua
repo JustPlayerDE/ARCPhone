@@ -13,9 +13,11 @@ APP.OpenApps = {}
 
 function APP:ToggleCustomizing()
 	if self.Customize then
+            -- TODO: Translation
 		self:RenameMenuOption("Finish customizing","Customize")
 		self:EndCustomization()
 	else
+            -- TODO: Translation
 		self:RenameMenuOption("Customize","Finish customizing")
 		self:StartCustomization()
 	end
@@ -29,12 +31,14 @@ function APP:NewAppIcon()
 	self:StartCustomization()
 	self.Tiles[#self.Tiles]:OnUnPressed()
 	self:SetCurPos(#self.Tiles)
+            -- TODO: Translation
 	self:RenameMenuOption("Customize","Finish customizing")
 end
 function APP:OpenAppsScreen(homeIsActiveApp)
 	if #self.OpenApps == 0 then return end
 	self.InOpenAppsScreen = true
 	self:ClearScreen()
+            -- TODO: Translation
 	self:RemoveMenuOption("Customize")
 	self:RemoveMenuOption("All Apps")
 	self:RemoveMenuOption("Resize")
@@ -78,6 +82,7 @@ end
 function APP:AllAppsScreen()
 	self.InOpenAppsScreen = false
 	self.InAllAppsScreen = true
+            -- TODO: Translation
 	self:RemoveMenuOption("Customize")
 	self:RemoveMenuOption("All Apps")
 	self:AddMenuOption("Add app to home",self.NewAppIcon,self)
@@ -159,6 +164,7 @@ function APP:Init()
 
 	self.InOpenAppsScreen = false
 	self.InAllAppsScreen = false
+            -- TODO: Translation
 	self:RemoveMenuOption("Resize")
 	self:RemoveMenuOption("Delete Icon")
 	self:RemoveMenuOption("Add app to home")
@@ -167,6 +173,7 @@ function APP:Init()
 	self:AddMenuOption("All Apps",self.AllAppsScreen,self)
 	
 	
+            -- TODO: Translation
 	if #self.Disk == 0 then
 		self.Disk = {
 			{
@@ -328,6 +335,7 @@ local function tileOnPressedWhileCustomizing(tile)
 		tile.bgcolor = tile.App.Phone.Settings.Personalization.CL_01_MainColour
 		tile.color = tile.App.Phone.Settings.Personalization.CL_03_MainText
 		if overlap then
+            -- TODO: Translation
 			tile.App.Phone:AddMsgBox("Tile overlapping","You cannot overlap tiles. Folders are not implemented yet.","report-symbol")
 			return
 		end
@@ -367,6 +375,7 @@ function APP:SetTileSizeFromDisk(tile)
 	end
 end
 function APP:StartCustomization()
+            -- TODO: Translation
 	self:RemoveMenuOption("All Apps")
 	self:AddMenuOption("Delete Icon",self.DeleteIcon,self)
 	self:AddMenuOption("Resize",function(app)
@@ -398,6 +407,7 @@ function APP:StartCustomization()
 	
 end
 function APP:EndCustomization()
+            -- TODO: Translation
 	self:RemoveMenuOption("Resize")
 	self:RemoveMenuOption("Delete Icon")
 	self:AddMenuOption("All Apps",self.AllAppsScreen,self)

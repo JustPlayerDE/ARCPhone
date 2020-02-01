@@ -31,6 +31,7 @@ ARCPhone.Commands["admin_gui"] = {
 				net.Send(ply)
 			end
 		else
+            -- TODO: Translation
 			ARCPhone.MsgCL(ply,"Invalid AdminGUI request")
 		end
 	end, 
@@ -59,6 +60,7 @@ net.Receive("ARCPhone_Admin_GUI",function(len,ply)
 			len = len + 1
 		end
 		if len > 255 then
+            -- TODO: Translation
 			ARCPhone.MsgCL(ply,"There cannot be more than 255 emergency numbers.")
 			return
 		end

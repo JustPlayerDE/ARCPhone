@@ -30,6 +30,7 @@ if ARCPhone then
 			local MainPanel = vgui.Create( "DFrame" )
 			MainPanel:SetSize( 232, 245 )
 			MainPanel:Center()
+            -- TODO: Translation
 			MainPanel:SetTitle( "Emergency Numbers" )
 			MainPanel:SetVisible( true )
 			MainPanel:SetDraggable( true )
@@ -52,11 +53,13 @@ if ARCPhone then
 			TeamDown.DoClick=function()
 				local i = TeamList:GetSelectedLine()
 				if i == nil then
+            -- TODO: Translation
 					Derma_Message( "No team selected.", "TeamList:GetSelectedLine() == nil", "OK" )
 					return
 				end
 				local teams = tab[selectedNumber]
 				if not teams then
+            -- TODO: Translation
 					Derma_Message( "No number selected.", "tab[selectedNumber] == nil", "OK" )
 					return
 				end
@@ -81,11 +84,13 @@ if ARCPhone then
 			TeamUp.DoClick=function()
 				local i = TeamList:GetSelectedLine()
 				if i == nil then
+            -- TODO: Translation
 					Derma_Message( "No team selected.", "TeamList:GetSelectedLine() == nil", "OK" )
 					return
 				end
 				local teams = tab[selectedNumber]
 				if not teams then
+            -- TODO: Translation
 					Derma_Message( "No number selected.", "tab[selectedNumber] == nil", "OK" )
 					return
 				end
@@ -104,15 +109,18 @@ if ARCPhone then
 			
 			
 			local TeamAdd = vgui.Create( "DButton", MainPanel )
+            -- TODO: Translation
 			TeamAdd:SetText( "Add new team..." )
 			TeamAdd:SetPos( 35, 60+120+5)
 			TeamAdd:SetSize( 130+33, 20 )
 			TeamAdd.DoClick = function()			
 			local teams = tab[selectedNumber]
 			if not teams then
+            -- TODO: Translation
 				Derma_Message( "No number selected.", "tab[selectedNumber] == nil", "OK" )
 				return
 			end			
+            -- TODO: Translation
 				Derma_StringRequest("Add new team...","Enter the new team to add.","",function( text ) 
 					text = text:Trim()
 					if text == "" then return end
@@ -122,17 +130,20 @@ if ARCPhone then
 			end
 			
 			local TeamRm = vgui.Create( "DButton", MainPanel )
+            -- TODO: Translation
 			TeamRm:SetText( "Remove selected team" )
 			TeamRm:SetPos( 35, 60+120+30)
 			TeamRm:SetSize( 130+33, 20 )
 			TeamRm.DoClick = function()
 				local i = TeamList:GetSelectedLine()
 				if i == nil then
+            -- TODO: Translation
 					Derma_Message( "No team selected.", "TeamList:GetSelectedLine() == nil", "OK" )
 					return
 				end
 				local teams = tab[selectedNumber]
 				if not teams then
+            -- TODO: Translation
 					Derma_Message( "No number selected.", "tab[selectedNumber] == nil", "OK" )
 					return
 				end
@@ -145,6 +156,7 @@ if ARCPhone then
 			
 			
 			local NumSelector = vgui.Create( "DComboBox", MainPanel )
+            -- TODO: Translation
 			NumSelector:SetText( "Select Emergency Number" )
 			NumSelector:SetPos( 10, 30 )
 			NumSelector:SetSize( 180-25, 20 )
@@ -153,9 +165,11 @@ if ARCPhone then
 				numberList[numberListLen] = k
 				NumSelector:AddChoice(k)
 			end
+            -- TODO: Translation
 			NumSelector:AddChoice("Add new number...")
 			function NumSelector:OnSelect(index,value,data)
 				if index > numberListLen then
+            -- TODO: Translation
 					self:SetText( "Select Emergency Number" )
 					Derma_StringRequest("Add new number...","Enter the new emergency number to add.","",function( text ) 
 						if ARCPhone.ValidPhoneNumberChars(text) then
@@ -172,9 +186,11 @@ if ARCPhone then
 								NumSelector:AddChoice(numberList[i])
 							end
 							TeamList:Clear()
+            -- TODO: Translation
 							NumSelector:AddChoice("Add new number...")
 							NumSelector:SetText( "Select Emergency Number" )
 						else
+            -- TODO: Translation
 							Derma_Message( "An emergency number can only contain the following characters:\n0123456789#*", "Invalid emergency number", "OK" )
 						end
 					end)
@@ -182,6 +198,7 @@ if ARCPhone then
 					selectedNumber = numberList[index]
 					local teams = tab[selectedNumber]
 					if not teams then
+            -- TODO: Translation
 						Derma_Message( "No number selected.", "tab[selectedNumber] == nil", "OK" )
 						return
 					end
@@ -201,6 +218,7 @@ if ARCPhone then
 			Delete.DoClick = function()
 				--selectedNumber = numberList[index]
 				if not tab[selectedNumber] then
+            -- TODO: Translation
 					Derma_Message( "No number selected.", "tab[selectedNumber] == nil", "OK" )
 					return
 				end
@@ -215,6 +233,7 @@ if ARCPhone then
 				for i=1,numberListLen do
 					NumSelector:AddChoice(numberList[i])
 				end
+            -- TODO: Translation
 				NumSelector:AddChoice("Add new number...")
 				NumSelector:SetText( "Select Emergency Number" )
 			end
@@ -224,12 +243,15 @@ if ARCPhone then
 			Hint:SetSize( 24, 20 )
 			Hint:SetImage( "icon16/information.png" )
 			Hint.DoClick = function()
+            -- TODO: Translation
 				Derma_Message( "When someone dials an emergency number, it will start a group chat between the caller and everyone on the first team of the list. If there's nobody on the first team, it will attempt to do the same with the second team, and so on.\nIf someone sends a text message to an emergency number, it will use the same process described above to decide who to forward the text to.	", "Emergency Numbers Description", "I got it!" )
 			end
 			MainPanel.OnClose = function()
 				MainPanel:SetVisible(true)
+            -- TODO: Translation
 				Derma_Query( "Save changes?", "Emergency Numbers", "Yes", function()
 					if table.Count( tab ) > 255 then
+            -- TODO: Translation
 						Derma_Message( "There cannot be more than 255 emergency numbers.", "Invalid user input", "OK" )
 						return
 					end
@@ -263,6 +285,7 @@ if ARCPhone then
 			LogList= vgui.Create( "DComboBox",MainPanel)
 			LogList:SetPos(5,550)
 			LogList:SetSize( 590, 20 )
+            -- TODO: Translation
 			LogList:SetText( "UNAVAILABLE" )
 		
 		else
@@ -283,6 +306,7 @@ if ARCPhone then
 			end
 
 			local AccountsButton = vgui.Create( "DComboBox", MainMenu )
+            -- TODO: Translation
 			AccountsButton:SetText( "Advanced settings" )
 			AccountsButton:SetPos( 10, 60 )
 			AccountsButton:SetSize( 180, 20 )
@@ -291,10 +315,12 @@ if ARCPhone then
 			end
 			function AccountsButton:OnSelect(index,value,data)
 				RunConsoleCommand( "arcphone","admin_gui","adv",value)
+            -- TODO: Translation
 				AccountsButton:SetText( "Advanced settings" )
 			end
 			
 			local SettingsButton = vgui.Create( "DButton", MainMenu )
+            -- TODO: Translation
 			SettingsButton:SetText( "Settings" )
 			SettingsButton:SetPos( 10, 90 )
 			SettingsButton:SetSize( 180, 20 )
@@ -302,6 +328,7 @@ if ARCPhone then
 				ARCLib.AddonConfigMenu("ARCPhone","arcphone")
 			end
 			local CommandButton = vgui.Create( "DButton", MainMenu )
+            -- TODO: Translation
 			CommandButton:SetText( "Commands" )
 			CommandButton:SetPos( 10, 120 )
 			CommandButton:SetSize( 180, 20 )

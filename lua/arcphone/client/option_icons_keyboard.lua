@@ -42,6 +42,7 @@ local function KeyPressed(panel,key)
 		if key == KEY_A then return true end
 		if key == KEY_C then
 			SetClipboardText(ARCPhone.PhoneSys.TextInputTile:GetText())
+            -- TODO: Translation
 			chat.AddText( "Text copied!" ) 
 			return true
 		end
@@ -50,6 +51,7 @@ local function KeyPressed(panel,key)
 			if ARCPhone.PhoneSys.TextInputTile.Editable then
 				ARCPhone.PhoneSys.TextInputTile:SetText("")
 			end
+            -- TODO: Translation
 			chat.AddText( "Text copied!" )
 			return true
 		end
@@ -102,6 +104,7 @@ end
 function ARCPhone.PhoneSys:KeyBoardInput(tile)
 	self.TextInputTile = tile
 	if !tile.Editable then
+            -- TODO: Translation
 		chat.AddText( "This is a read-only text box. This means that you can only copy text from here" )
 	end
 	textbox = vgui.Create("DTextEntry")

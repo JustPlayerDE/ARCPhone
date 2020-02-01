@@ -3,6 +3,7 @@
 -- © Copyright 2016-2017 Aritz Beobide-Cardinal All rights reserved.
 
 -- TODO: STOP MESSING WITH APP.Tiles and do the stuff properly!!
+-- TODO: Translation
 local APP = ARCPhone.NewAppObject()
 APP.Name = "Settings"
 APP.Author = "ARitz Cracker"
@@ -49,6 +50,7 @@ function APP:SelectCategory(a)
 				end
 			end
 			if customChoice then
+            -- TODO: Translation
 				self.Tiles[i].ChoiceText = "*CUSTOM*"
 			end
 			ypos = ypos + 22 + 5
@@ -112,6 +114,7 @@ function APP:SelectCategory(a)
 				self.Tiles[i].h = 18
 				self.Tiles[i].color = self.Phone.Settings.Personalization.CL_01_MainColour
 				self.Tiles[i].drawfunc = function(tile,x,y)
+            -- TODO: Translation
 					draw.SimpleText("Preview ringtone", "ARCPhone", x+tile.w*0.5, y+tile.h*0.5, self.Phone.Settings.Personalization.CL_03_MainText, TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER) 
 				end
 				self.Tiles[i].OnPressed = function(tile)
@@ -136,6 +139,7 @@ function APP:SelectCategory(a)
 				self.Tiles[ii]:SetValue(val)
 			end
 			self.Tiles[ii].OnChosen = function(tile)
+            -- TODO: Translation
 				self.Tiles[ii-1].ChoiceText = "*CUSTOM*"
 			end
 		end
@@ -168,12 +172,14 @@ function APP:Init()
 		self.Tiles[i].OnUnPressed = function(tile)
 			tile.bgcolor = self.Phone.Settings.Personalization.CL_01_MainColour
 			if k == "Privacy" then
+            -- TODO: Translation
 				tile.App.Phone:AddMsgBox("Coming soon!","There's nothing here yet!")
 			elseif k == "System" then
 				self.FriendlyScreen = true
 				self:ClearScreen()
 				local i = 1
 				local ypos = 32
+            -- TODO: Translation
 				self:CreateNewLabel(8,ypos,0,0,"Your phone number","ARCPhone",self.Phone.Settings.Personalization.CL_03_MainText,self.Phone.Settings.Personalization.CL_01_MainColour)
 				ypos = ypos + 16
 				self.Tiles[i] = ARCPhone.NewAppTextInputTile(self,ARCPhone.GetPhoneNumber(LocalPlayer()),false,122)
@@ -188,6 +194,7 @@ function APP:Init()
 				ypos = ypos + 18 + 5
 				--{s.KeyUp,s.KeyDown,s.KeyLeft,s.KeyRight,s.KeyEnter,s.KeyBack,s.KeyContext}
 				
+            -- TODO: Translation
 				self:CreateNewLabel(8,ypos,0,0,"Move Up","ARCPhone",self.Phone.Settings.Personalization.CL_03_MainText,self.Phone.Settings.Personalization.CL_01_MainColour)
 				ypos = ypos + 16 
 				i = i + 1
@@ -204,6 +211,7 @@ function APP:Init()
 					local val = tile:GetValue()
 					if s.KeyUp == val then return end
 					if table.HasValue( tile.App.Phone.ValidKeys, val ) then
+            -- TODO: Translation
 						tile.App.Phone:AddMsgBox("I just saved your ass","Your actions would have made your phone unusable","report-symbol")
 						tile:SetValue(s.KeyUp)
 						return
@@ -218,6 +226,7 @@ function APP:Init()
 				end
 				ypos = ypos + 18 + 5
 				
+            -- TODO: Translation
 				self:CreateNewLabel(8,ypos,0,0,"Move Down","ARCPhone",self.Phone.Settings.Personalization.CL_03_MainText,self.Phone.Settings.Personalization.CL_01_MainColour)
 				ypos = ypos + 16 
 				i = i + 1
@@ -234,6 +243,7 @@ function APP:Init()
 					local val = tile:GetValue()
 					if s.KeyDown == val then return end
 					if table.HasValue( tile.App.Phone.ValidKeys, val ) then
+            -- TODO: Translation
 						tile.App.Phone:AddMsgBox("I just saved your ass","Your actions would have made your phone unusable","report-symbol")
 						tile:SetValue(s.KeyDown)
 						return
@@ -243,6 +253,7 @@ function APP:Init()
 				end
 				ypos = ypos + 18 + 5
 				
+            -- TODO: Translation
 				self:CreateNewLabel(8,ypos,0,0,"Move Left","ARCPhone",self.Phone.Settings.Personalization.CL_03_MainText,self.Phone.Settings.Personalization.CL_01_MainColour)
 				ypos = ypos + 16 
 				i = i + 1
@@ -259,6 +270,7 @@ function APP:Init()
 					local val = tile:GetValue()
 					if s.KeyLeft == val then return end
 					if table.HasValue( tile.App.Phone.ValidKeys, val ) then
+            -- TODO: Translation
 						tile.App.Phone:AddMsgBox("I just saved your ass","Your actions would have made your phone unusable","report-symbol")
 						tile:SetValue(s.KeyLeft)
 						return
@@ -268,6 +280,7 @@ function APP:Init()
 				end
 				ypos = ypos + 18 + 5
 				
+            -- TODO: Translation
 				self:CreateNewLabel(8,ypos,0,0,"Move Right","ARCPhone",self.Phone.Settings.Personalization.CL_03_MainText,self.Phone.Settings.Personalization.CL_01_MainColour)
 				ypos = ypos + 16 
 				i = i + 1
@@ -284,6 +297,7 @@ function APP:Init()
 					local val = tile:GetValue()
 					if s.KeyRight == val then return end
 					if table.HasValue( tile.App.Phone.ValidKeys, val ) then
+            -- TODO: Translation
 						tile.App.Phone:AddMsgBox("I just saved your ass","Your actions would have made your phone unusable","report-symbol")
 						tile:SetValue(s.KeyRight)
 						return
@@ -293,6 +307,7 @@ function APP:Init()
 				end
 				ypos = ypos + 18 + 5
 				
+            -- TODO: Translation
 				self:CreateNewLabel(8,ypos,0,0,"Select","ARCPhone",self.Phone.Settings.Personalization.CL_03_MainText,self.Phone.Settings.Personalization.CL_01_MainColour)
 				ypos = ypos + 16 
 				i = i + 1
@@ -309,6 +324,7 @@ function APP:Init()
 					local val = tile:GetValue()
 					if s.KeyEnter == val then return end
 					if table.HasValue( tile.App.Phone.ValidKeys, val ) then
+            -- TODO: Translation
 						tile.App.Phone:AddMsgBox("I just saved your ass","Your actions would have made your phone unusable","report-symbol")
 						tile:SetValue(s.KeyEnter)
 						return
@@ -318,6 +334,7 @@ function APP:Init()
 				end
 				ypos = ypos + 18 + 5
 				
+            -- TODO: Translation
 				self:CreateNewLabel(8,ypos,0,0,"Back","ARCPhone",self.Phone.Settings.Personalization.CL_03_MainText,self.Phone.Settings.Personalization.CL_01_MainColour)
 				ypos = ypos + 16 
 				i = i + 1
@@ -334,6 +351,7 @@ function APP:Init()
 					local val = tile:GetValue()
 					if s.KeyBack == val then return end
 					if table.HasValue( tile.App.Phone.ValidKeys, val ) then
+            -- TODO: Translation
 						tile.App.Phone:AddMsgBox("I just saved your ass","Your actions would have made your phone unusable","report-symbol")
 						tile:SetValue(s.KeyBack)
 						return
@@ -343,6 +361,7 @@ function APP:Init()
 				end
 				ypos = ypos + 18 + 5
 				
+            -- TODO: Translation
 				self:CreateNewLabel(8,ypos,0,0,"Context Menu","ARCPhone",self.Phone.Settings.Personalization.CL_03_MainText,self.Phone.Settings.Personalization.CL_01_MainColour)
 				ypos = ypos + 16 
 				i = i + 1
@@ -359,6 +378,7 @@ function APP:Init()
 					local val = tile:GetValue()
 					if s.KeyContext == val then return end
 					if table.HasValue( tile.App.Phone.ValidKeys, val ) then
+            -- TODO: Translation
 						tile.App.Phone:AddMsgBox("I just saved your ass","Your actions would have made your phone unusable","report-symbol")
 						tile:SetValue(s.KeyContext)
 						return
@@ -377,6 +397,7 @@ function APP:Init()
 				self.Tiles[i].h = 18
 				self.Tiles[i].color = self.Phone.Settings.Personalization.CL_03_MainText
 				self.Tiles[i].bgcolor = self.Phone.Settings.Personalization.CL_01_MainColour
+            -- TODO: Translation
 				self.Tiles[i].text = "Advanced settings"
 				
 				self.Tiles[i].OnPressed = function(tile)
@@ -445,6 +466,7 @@ function APP:Init()
 					
 				end
 				
+            -- TODO: Translation
 				self:CreateNewLabel(8,ypos,0,0,"Phone Case","ARCPhone",self.Phone.Settings.Personalization.CL_03_MainText,self.Phone.Settings.Personalization.CL_01_MainColour)
 				ypos = ypos + 16
 				i = i + 1
@@ -479,6 +501,7 @@ function APP:Init()
 				self.Tiles[i].h = 18
 				self.Tiles[i].color = self.Phone.Settings.Personalization.CL_03_MainText
 				self.Tiles[i].bgcolor = self.Phone.Settings.Personalization.CL_01_MainColour
+            -- TODO: Translation
 				self.Tiles[i].text = "Advanced settings"
 				
 				self.Tiles[i].OnPressed = function(tile)

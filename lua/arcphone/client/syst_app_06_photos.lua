@@ -3,6 +3,7 @@
 -- © Copyright 2016-2017 Aritz Beobide-Cardinal All rights reserved.
 
 -- TODO: STOP MESSING WITH APP.Tiles and do the stuff properly!!
+-- TODO: Translation
 local APP = ARCPhone.NewAppObject()
 APP.Name = "Photos"
 APP.Author = "ARitz Cracker"
@@ -69,6 +70,7 @@ function APP:Init()
 	self.Tiles[1].h = 18
 	self.Tiles[1].color = self.Phone.Settings.Personalization.CL_01_MainColour
 	self.Tiles[1].drawfunc = function(tile,x,y)
+            -- TODO: Translation
 		draw.SimpleText("Camera Roll", "ARCPhone", x+tile.w*0.5, y+tile.h*0.5, self.Phone.Settings.Personalization.CL_03_MainText, TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER) 
 	end
 	self.Tiles[1].OnPressed = function(tile)
@@ -87,6 +89,7 @@ function APP:Init()
 	self.Tiles[2].h = 18
 	self.Tiles[2].color = self.Phone.Settings.Personalization.CL_01_MainColour
 	self.Tiles[2].drawfunc = function(tile,x,y)
+            -- TODO: Translation
 		draw.SimpleText("Received Photos", "ARCPhone", x+tile.w*0.5, y+tile.h*0.5, self.Phone.Settings.Personalization.CL_03_MainText, TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER) 
 	end
 	self.Tiles[2].OnPressed = function(tile)
@@ -105,6 +108,7 @@ function APP:Init()
 	self.Tiles[3].h = 18
 	self.Tiles[3].color = self.Phone.Settings.Personalization.CL_01_MainColour
 	self.Tiles[3].drawfunc = function(tile,x,y)
+            -- TODO: Translation
 		draw.SimpleText("Saved Photos", "ARCPhone", x+tile.w*0.5, y+tile.h*0.5, self.Phone.Settings.Personalization.CL_03_MainText, TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER) 
 	end
 	self.Tiles[3].OnPressed = function(tile)
@@ -126,6 +130,7 @@ function APP:ListPhotos(dir)
 	
 	local files, directories = file.Find( ARCPhone.ROOTDIR.."/photos/"..dir.."/*.photo.*", "DATA" )
 	if #files == 0 then
+            -- TODO: Translation
 		self.Phone:AddMsgBox("Empty","There aren't any photos here!","warning")
 		return
 	end

@@ -3,6 +3,7 @@
 -- © Copyright 2016-2017 Aritz Beobide-Cardinal All rights reserved.
 
 -- TODO: STOP MESSING WITH APP.Tiles and do the stuff properly!!
+-- TODO: Translation
 local APP = ARCPhone.NewAppObject()
 APP.Name = "Camera"
 APP.Author = "ARitz Cracker"
@@ -69,11 +70,13 @@ function APP:ScanQRCode()
 			self.Phone:AddMsgBox("QRCode",err,"warning-sign")
 		else
 			if (string.StartWith( str, "https://" ) or string.StartWith( str, "http://" ) ) then
+            -- TODO: Translation
 				self.Phone:AddMsgBox("URL QR Code","Would you like to go to the following URL?\n"..str,"help-round-button",ARCPHONE_MSGBOX_YESNO,function()
 					gui.OpenURL( str )
 				end,rfunc)
 			elseif string.StartWith( string.lower(str), "tel:" ) then
 				local num = string.sub(str,5)
+            -- TODO: Translation
 				self.Phone:AddMsgBox("Call QR Code","Would you like to call the following phone number?\n"..num,"help-round-button",ARCPHONE_MSGBOX_YESNO,function()
 					self.Phone:Call(num)
 				end,rfunc)
@@ -81,6 +84,7 @@ function APP:ScanQRCode()
 				local seperator = string.find( str, ":", 7, true )
 				local num = string.sub(str,7,seperator-1)
 				local msg = string.sub(str,seperator+1)
+            -- TODO: Translation
 				self.Phone:AddMsgBox("SMS QR Code","Would you like to open a text message conversation with the following phone number?\n"..num,"help-round-button",ARCPHONE_MSGBOX_YESNO,function()
 					ARCPhone.PhoneSys:OpenApp("messaging"):OpenConvo(num,msg)
 				end,rfunc)
@@ -112,6 +116,7 @@ function APP:Init()
 	self.Tiles[1].h = 18
 	self.Tiles[1].color = self.Phone.Settings.Personalization.CL_01_MainColour
 	self.Tiles[1].drawfunc = function(tile,x,y)
+            -- TODO: Translation
 		draw.SimpleText("Take Photo", "ARCPhone", x+tile.w*0.5, y+tile.h*0.5, self.Phone.Settings.Personalization.CL_03_MainText, TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER) 
 	end
 	self.Tiles[1].OnPressed = function(tile)
@@ -140,6 +145,7 @@ function APP:Init()
 			return pos,ang
 		end)
 	end
+            -- TODO: Translation
 	self:AddMenuOption("Scan QR Code",self.ScanQRCode,self)
 	self:AddMenuOption("Switch Camera",self.SwitchCamera,self)
 end

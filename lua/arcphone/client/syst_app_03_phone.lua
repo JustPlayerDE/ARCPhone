@@ -3,6 +3,7 @@
 -- © Copyright 2016-2017 Aritz Beobide-Cardinal All rights reserved.
 
 -- TODO: STOP MESSING WITH APP.Tiles and do the stuff properly!!
+-- TODO: Translation
 local APP = ARCPhone.NewAppObject()
 APP.Name = "Call"
 APP.Author = "ARitz Cracker"
@@ -23,6 +24,7 @@ function APP:AddNumber(num)
 	end
 end
 function APP:PhoneStart()
+            -- TODO: Translation
 	ARCPhone.Apps["contacts"]:AddContactOption("Call",self.Phone.Call,self.Phone)
 	ARCPhone.Apps["contacts"]:AddContactOption("Add to call",self.Phone.AddToCall,self.Phone)
 end
@@ -140,6 +142,7 @@ function APP:CallScreen()
 		tile.App.Phone:HangUp()
 	end
 	self.Tiles[1].drawfunc = function(tile,x,y)
+            -- TODO: Translation
 		draw.SimpleText("End Call", "ARCPhone", x+tile.w*0.5, y+tile.h*0.5, self.Phone.Settings.Personalization.CL_03_MainText , TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER) 
 	end
 	self:UpdateCallList()
@@ -226,6 +229,7 @@ function APP:Init()
 		tile.App.Phone:Call(tile.App.Dialnum)
 	end
 	self.Tiles[15].drawfunc = function(tile,x,y)
+            -- TODO: Translation
 		draw.SimpleText( "Call", "ARCPhone", x+tile.w*0.5, y+tile.h*0.5, self.Phone.Settings.Personalization.CL_03_MainText , TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER) 
 	end
 end

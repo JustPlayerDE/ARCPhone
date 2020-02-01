@@ -1,6 +1,6 @@
 -- This file is under copyright, and is bound to the agreement stated in the EULA.
 -- Any 3rd party content has been used as either public domain or with permission.
--- © Copyright 2016-2017 Aritz Beobide-Cardinal All rights reserved.
+-- ï¿½ Copyright 2016-2017 Aritz Beobide-Cardinal All rights reserved.
 function ARCPhone.PhoneSys:ChoosePhoto(func,...)
 	local curapp = ARCPhone.Apps[self.ActiveApp]
 	local newapp = self:OpenApp("photos")
@@ -122,6 +122,7 @@ end
 function ARCPhone.PhoneSys:OpenApp(app,foceInit)
 	if !isstring(app) || !istable(ARCPhone.Apps[app]) then
 		app = tostring(app)
+            -- TODO: Translation?
 		self:AddMsgBox("Cannot open "..app,"App '"..app.."' is invalid or not available in this area.\n("..type(ARCPhone.Apps[app])..")","report-symbol")
 	else
 		--self:CloseApp(self.ActiveApp)

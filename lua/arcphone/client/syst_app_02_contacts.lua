@@ -3,6 +3,7 @@
 -- © Copyright 2016-2017 Aritz Beobide-Cardinal All rights reserved.
 
 -- TODO: STOP MESSING WITH APP.Tiles and do the stuff properly!!
+-- TODO: Translation
 local APP = ARCPhone.NewAppObject()
 APP.Name = "Contacts"
 APP.Author = "ARitz Cracker"
@@ -156,6 +157,7 @@ function APP:PhoneStart()
 		if app.Tiles[app.SelectedAppTile].ContactEditable then
 			app:EditContact(app.SelectedAppTile)
 		else
+            -- TODO: Translation
 			ARCPhone.PhoneSys:AddMsgBox("Cannot edit","You cannot edit this icon because it's not a contact entry","report-symbol")
 		end
 	end
@@ -221,6 +223,7 @@ function APP:Init()
 	self.Tiles[len].h = 28
 	self.Tiles[len].color = self.Phone.Settings.Personalization.CL_03_SecondaryColour
 	self.Tiles[len].drawfunc = function(tile,x,y)
+            -- TODO: Translation
 		draw.SimpleText("**New contact**", "ARCPhone", x+tile.w*0.5, y+tile.h*0.5, self.Phone.Settings.Personalization.CL_05_SecondaryText, TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER) 
 
 	end
@@ -241,6 +244,7 @@ function APP:Init()
 	self.Tiles[len].h = 28
 	self.Tiles[len].color = self.Phone.Settings.Personalization.CL_03_SecondaryColour
 	self.Tiles[len].drawfunc = function(tile,x,y)
+            -- TODO: Translation
 		draw.SimpleText("**People near by**", "ARCPhone", x+tile.w*0.5, y+tile.h*0.5, self.Phone.Settings.Personalization.CL_05_SecondaryText, TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER) 
 	end
 	self.Tiles[len].OnPressed = function(tile)
@@ -249,6 +253,7 @@ function APP:Init()
 	self.Tiles[len].OnUnPressed = function(tile)
 		tile.color = self.Phone.Settings.Personalization.CL_03_SecondaryColour
 		if tile.App.Phone.Reception < 15 then
+            -- TODO: Translation
 			tile.App.Phone:AddMsgBox("No signal","You do not have enough reception to perform this operation","warning-sign")
 		else
 			tile.App.Phone:SetLoading(-1)
@@ -323,6 +328,7 @@ function APP:EditContact(tileid)
 	end
 	self.Tiles[1].OnUnPressed = function(tile)
 		tile.color = color_white
+            -- TODO: Translation
 		tile.App.Phone:AddMsgBox("Coming soon!","You cannot change contact photos yet")
 	end
 	
@@ -333,6 +339,7 @@ function APP:EditContact(tileid)
 		self.Tiles[2] = ARCPhone.NewAppTextInputTile(self,"",false,118)
 		self.Tiles[3] = ARCPhone.NewAppTextInputTile(self,"",false,118)
 	end
+            -- TODO: Translation
 	self.Tiles[2].ID = 2
 	self.Tiles[3].ID = 3
 	self.Tiles[2]:SetPlaceholder("Contact Name")
@@ -371,6 +378,7 @@ function APP:EditContact(tileid)
 		tile.App:Init()
 	end
 	self.Tiles[4].drawfunc = function(tile,x,y)
+            -- TODO: Translation
 		draw.SimpleText( "Delete", "ARCPhone", x+tile.w*0.5, y+tile.h*0.5, self.Phone.Settings.Personalization.CL_11_QuaternaryText, TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER) 
 	end
 	
@@ -399,10 +407,12 @@ function APP:EditContact(tileid)
 			tile.App:SaveData()
 			tile.App:Init()
 		else
+            -- TODO: Translation
 			tile.App.Phone:AddMsgBox("Cannot save","the number you have entered is invalid.","report-symbol")
 		end
 	end
 	self.Tiles[5].drawfunc = function(tile,x,y)
+            -- TODO: Translation
 		draw.SimpleText( "Save", "ARCPhone", x+tile.w*0.5, y+tile.h*0.5, self.Phone.Settings.Personalization.CL_03_MainText, TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER) 
 	end
 	

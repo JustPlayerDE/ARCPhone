@@ -1,6 +1,6 @@
 -- This file is under copyright, and is bound to the agreement stated in the EULA.
 -- Any 3rd party content has been used as either public domain or with permission.
--- © Copyright 2016-2017 Aritz Beobide-Cardinal All rights reserved.
+-- ï¿½ Copyright 2016-2017 Aritz Beobide-Cardinal All rights reserved.
 local maxmsglen = 8000*255
 function ARCPhone.PhoneSys:SendText(number,message,app)
 	if message == "" then message = " " end
@@ -21,6 +21,7 @@ function ARCPhone.PhoneSys:SendText(number,message,app)
 	message = number.."\v"..message
 	if #message > maxmsglen then
 		if not app then
+            -- TODO: Translation
 			self:AddMsgBox("Text too long","The size limit for a message is 1.95MiB or 1.56MiB if the message contains an image.","report-symbol")
 		end
 		return false
@@ -58,6 +59,7 @@ function ARCPhone.PhoneSys:ReceiveText(number,timestamp,message)
 		if istable(self.TextApps[number]) then
 			self.TextApps[number]:OnText(timestamp,message)
 		else
+            -- TODO: Translation
 			self:AddMsgBox("ERROR","This phone received a text from "..number.." but there is no app associated with that number.","report-symbol")
 		end
 	else
@@ -78,6 +80,7 @@ function ARCPhone.PhoneSys:ReceiveText(number,timestamp,message)
 			if contactapp then
 				name = contactapp:GetNameFromNumber(number)
 			end
+            -- TODO: Translation
 			self:AddMsgBox("New Message","New Message from "..name.." ("..number..")","sms-speech-bubble",ARCPHONE_MSGBOX_REPLY,function()
 				app = self:OpenApp("messaging")
 				app:OpenConvo(number)
@@ -88,9 +91,11 @@ function ARCPhone.PhoneSys:ReceiveText(number,timestamp,message)
 end
 function ARCPhone.PhoneSys:Call(number)
 	if !ARCPhone.IsValidPhoneNumber(number) then
+            -- TODO: Translation
 		self:AddMsgBox("ARCPhone","Invalid number.","report-symbol")
 	else
 		if self.Status != ARCPHONE_ERROR_CALL_ENDED then
+            -- TODO: Translation
 			self:AddMsgBox("ARCPhone","A call is already in progress","report-symbol")
 		else
 			ARCPhone.PhoneSys.CallPending = true
@@ -111,6 +116,7 @@ function ARCPhone.PhoneSys:Answer()
 		net.WriteInt(2,8)
 		net.SendToServer()
 	else
+            -- TODO: Translation
 		self:AddMsgBox("ARCPhone","Cannot answer while not ringing","report-symbol")
 	end
 end
@@ -123,6 +129,7 @@ function ARCPhone.PhoneSys:GroupCall(tabonumbers)
 		net.WriteInt(number*-1,8)
 		for i = 1,number do
 			if ARCPhone.IsValidPhoneNumber(tabonumbers[i]) then
+            -- TODO: Translation
 				self:AddMsgBox("ARCPhone","Number "..i.." is invalid.","warning-sign")
 			else
 				net.WriteString(tabonumbers[i])
@@ -130,6 +137,7 @@ function ARCPhone.PhoneSys:GroupCall(tabonumbers)
 		end
 		net.SendToServer()
 	else
+            -- TODO: Translation
 		self:AddMsgBox("ARCPhone","Not enough numbers.","error")
 		self:Print("Not enough numbers.")
 	end
@@ -138,6 +146,7 @@ end
 function ARCPhone.PhoneSys:AddToCall(number)
 	if ARCPhone.IsValidPhoneNumber(number) then
 		if ARCPhone.PhoneSys.Status != ARCPHONE_ERROR_NONE then
+            -- TODO: Translation
 			self:AddMsgBox("ARCPhone","No call running or call has not been established.","report-symbol")
 		else
 			net.Start("arcphone_comm_call")
@@ -152,6 +161,7 @@ function ARCPhone.PhoneSys:AddToCall(number)
 			end
 		end
 	else
+            -- TODO: Translation
 		self:AddMsgBox("ARCPhone","A phone number can only contain the following characters: 0-9 # *\nThe number must be 10 digits long or an emergency number.","report-symbol")
 	end
 end

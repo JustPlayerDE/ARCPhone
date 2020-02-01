@@ -43,6 +43,7 @@ function ARCPhone.OnStatusChanged()
 				ARCPhone.PhoneSys:AddMsgBox("ARCPhone",ARCPHONE_ERRORSTRINGS[newstatus],"round-info-button")
 			end
 			if newstatus == ARCPHONE_ERROR_CALL_ENDED && istable(ARCPhone.PhoneSys.MsgBoxs) then
+            -- TODO: Translation
 				for i=1,#ARCPhone.PhoneSys.MsgBoxs do
 					if ARCPhone.PhoneSys.MsgBoxs[i].Title == "Incoming call" then
 						ARCPhone.PhoneSys.MsgBoxs[i].Title = "Missed call!"
@@ -64,6 +65,7 @@ function ARCPhone.OnStatusChanged()
 			for k,v in pairs(ARCPhone.PhoneSys.CurrentCall.on) do
 				lst = lst.."\n"..contactapp:GetNameFromNumber(v).." ("..v..")"
 			end
+            -- TODO: Translation
 			ARCPhone.PhoneSys:AddMsgBox("Incoming call","You're receiving a call from:"..lst,"phone-working-indicator",8,function() ARCPhone.PhoneSys:Answer() ARCPhone.PhoneSys:OpenApp("dialer") end,function() ARCPhone.PhoneSys:HangUp() end,function() ARCPhone.PhoneSys:OpenApp("messaging"):OpenConvo(ARCPhone.PhoneSys.CurrentCall.on[1]) ARCPhone.PhoneSys:HangUp() end)
 			--http://www.aritzcracker.ca/arcphone/ringtones/Reflection.mp3
 			--"http://www.aritzcracker.ca/arcphone/ringtones/generic1.mp3"
@@ -81,6 +83,7 @@ function ARCPhone.OnStatusChanged()
 					RingingSound:EnableLooping(true) 
 					RingingSound:SetVolume(0.5)
 				else
+            -- TODO: Translation
 					ARCPhone.PhoneSys:AddMsgBox("PlayURL Error","Failed to play ARCPhone.PhoneSys.Ringtones.PhoneCall\n("..tostring(errid)..") "..tostring(errstr),"round-error-symbol")
 				end
 			end)
@@ -101,6 +104,7 @@ function ARCPhone.PhoneSys:PlayNotification(snd)
 				NotifSound:Play()
 				NotifSound:SetVolume(0.25)
 			else
+            -- TODO: Translation
 				ARCPhone.PhoneSys:AddMsgBox("PlayURL Error","Failed to play ARCPhone.PhoneSys.Ringtones."..snd.."\n("..tostring(errid)..") "..tostring(errstr),"round-error-symbol")
 			end
 		end)
@@ -125,6 +129,7 @@ hook.Add( "HUDPaint", "ARCPhone TutorialHud", function()
 	if ARCPhone.PhoneSys.ControlHints > SysTime() then
 		color_white_fade.a = (191 + (math.cos(SysTime()*math.pi*2 + math.pi))*64)*ARCLib.BetweenNumberScaleReverse(ARCPhone.PhoneSys.ControlHints-5,SysTime(),ARCPhone.PhoneSys.ControlHints)
 		color_black_fade.a = color_white_fade.a
+            -- TODO: Translation
 		w = draw.SimpleTextOutlined( "Use ["..ARCLib.HumanReadableKey(s.KeyUp)..","..ARCLib.HumanReadableKey(s.KeyLeft)..","..ARCLib.HumanReadableKey(s.KeyDown)..","..ARCLib.HumanReadableKey(s.KeyRight).."] to navigate", "ARCPhoneBig", xpos, ypos+16, color_white_fade, TEXT_ALIGN_RIGHT, TEXT_ALIGN_CENTER, 1, color_black_fade ) 
 		xposimg = xpos - w - 36
 		surface.SetMaterial( ARCLib.GetWebIcon32("transform_move") ) 
@@ -132,6 +137,7 @@ hook.Add( "HUDPaint", "ARCPhone TutorialHud", function()
 		surface.DrawTexturedRect( xposimg,ypos,32,32 )
 		
 		ypos = ypos + 36
+            -- TODO: Translation
 		w = draw.SimpleTextOutlined( "Press ["..ARCLib.HumanReadableKey(s.KeyEnter).."] to select", "ARCPhoneBig", xpos, ypos+16, color_white_fade, TEXT_ALIGN_RIGHT, TEXT_ALIGN_CENTER, 1, color_black_fade ) 
 		xposimg = xpos - w - 36
 		surface.SetMaterial( ARCLib.GetWebIcon32("mouse_select_left") ) 
@@ -139,6 +145,7 @@ hook.Add( "HUDPaint", "ARCPhone TutorialHud", function()
 		surface.DrawTexturedRect( xposimg,ypos,32,32 ) 
 		
 		ypos = ypos + 36
+            -- TODO: Translation
 		w = draw.SimpleTextOutlined( "Press ["..ARCLib.HumanReadableKey(s.KeyContext).."] to view app options", "ARCPhoneBig", xpos, ypos+16, color_white_fade, TEXT_ALIGN_RIGHT, TEXT_ALIGN_CENTER, 1, color_black_fade ) 
 		xposimg = xpos - w - 36
 		surface.SetMaterial( ARCLib.GetWebIcon32("mouse_select_right") ) 
@@ -146,6 +153,7 @@ hook.Add( "HUDPaint", "ARCPhone TutorialHud", function()
 		surface.DrawTexturedRect( xposimg,ypos,32,32 )
 		
 		ypos = ypos + 36
+            -- TODO: Translation
 		w = draw.SimpleTextOutlined( "Press ["..ARCLib.HumanReadableKey(s.KeyBack).."] to go back", "ARCPhoneBig", xpos, ypos+16, color_white_fade, TEXT_ALIGN_RIGHT, TEXT_ALIGN_CENTER, 1, color_black_fade ) 
 		xposimg = xpos - w - 36
 		surface.SetMaterial( ARCLib.GetWebIcon32("arrow_left") ) 
@@ -159,6 +167,7 @@ hook.Add( "HUDPaint", "ARCPhone TutorialHud", function()
 		color_white_fade.a = (math.cos(SysTime()*math.pi + math.pi)*0.5+0.5)*255
 		color_black_fade.a = color_white_fade.a
 		surface.SetDrawColor(color_white_fade)
+            -- TODO: Translation
 		w = draw.SimpleTextOutlined( "Press ["..ARCLib.HumanReadableKey(s.KeyUp).."] to unlock your phone", "ARCPhoneBig", xpos, ypos+16, color_white_fade, TEXT_ALIGN_RIGHT, TEXT_ALIGN_CENTER, 1, color_black_fade ) 
 		xpos = xpos - w - 32
 		if ARCPhone.PhoneSys.Status == ARCPHONE_ERROR_RINGING then

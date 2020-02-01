@@ -23,16 +23,19 @@ end
 
 function APP:Init()
 	if (not ARCLib.IsVersion("1.4.2","ARCBank")) then
+            -- TODO: Translation
 		self.Phone:AddMsgBox("ARCBank","This application requires ARCBank 1.4.2 or later to be installed on the server.","report-symbol")
 		self:Close()
 	end
 	self.CurAccount = nil
 	self:ClearScreen()
 	local titleTile = self:CreateNewTile(4,20,130,32)
+            -- TODO: Translation
 	titleTile.text = "ARCBank app!"
 	titleTile.color = self.Phone.Settings.Personalization.CL_01_MainColour
 	
 	local titleTile = self:CreateNewTile(10,60,120,16)
+            -- TODO: Translation
 	titleTile.text = "Personal Account"
 	titleTile.color = self.Phone.Settings.Personalization.CL_01_MainColour
 	titleTile.OnPressed = function(tile)
@@ -44,6 +47,7 @@ function APP:Init()
 	end
 	
 	local titleTile = self:CreateNewTile(10,80,120,16)
+            -- TODO: Translation
 	titleTile.text = "Group Accounts"
 	titleTile.color = self.Phone.Settings.Personalization.CL_01_MainColour
 	titleTile.OnPressed = function(tile)
@@ -82,6 +86,7 @@ end
 function APP:ActuallySendMoney(account)
 	self:ClearScreen()
 	local tile = self:CreateNewTile(10,20,120,16)
+            -- TODO: Translation
 	tile.text = "How much?"
 	tile.color = self.Phone.Settings.Personalization.CL_01_MainColour
 	
@@ -130,6 +135,7 @@ function APP:AddPlayerToGroup(contact)
 	else
 		otherply = self.Disk[contact.number]
 		if not otherply then
+            -- TODO: Translation
 			self.Phone:AddMsgBox("Player is offline.","This player is currently offline. In order to add this person, you must have sent money to them before.","warning-sign")
 			return
 		end
@@ -185,6 +191,7 @@ function APP:SendMoney(contact)
 	else
 		self.Recipient = self.Disk[contact.number]
 		if not self.Recipient then
+            -- TODO: Translation
 			self.Phone:AddMsgBox("Player is offline.","This player is currently offline. In order to send money to this person, you must have sent money to them before.","warning-sign")
 			return
 		end
@@ -193,6 +200,7 @@ function APP:SendMoney(contact)
 	self:ClearScreen()
 	local tile = self:CreateNewTile(10,20,120,16)
 	tile.account = ""
+            -- TODO: Translation
 	tile.text = "Personal Account"
 	tile.color = self.Phone.Settings.Personalization.CL_03_SecondaryColour
 	tile.OnPressed = function(tile)
@@ -229,6 +237,7 @@ end
 
 function APP:AccountProperties(name)
 	if self.Phone.Reception < 15 then
+            -- TODO: Translation
 		self.Phone:AddMsgBox("No signal","You do not have enough reception to perform this operation","warning-sign")
 		return
 	end
@@ -269,6 +278,7 @@ function APP:AccountProperties(name)
 			
 			if (account.rank > ARCBANK_GROUPACCOUNTS_) then
 				local tile = self:CreateNewTile(10,80,120,16)
+            -- TODO: Translation
 				tile.text = "Add Group Member"
 				tile.color = self.Phone.Settings.Personalization.CL_01_MainColour
 				tile.OnPressed = function(tile)
@@ -280,6 +290,7 @@ function APP:AccountProperties(name)
 				end
 				
 				local tile = self:CreateNewTile(10,100,120,16)
+            -- TODO: Translation
 				tile.text = "Remove Group Member"
 				tile.color = self.Phone.Settings.Personalization.CL_01_MainColour
 				tile.OnPressed = function(tile)

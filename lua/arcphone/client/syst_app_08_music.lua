@@ -1,8 +1,9 @@
 -- This file is under copyright, and is bound to the agreement stated in the EULA.
 -- Any 3rd party content has been used as either public domain or with permission.
--- © Copyright 2017 Aritz Beobide-Cardinal All rights reserved.
+-- ï¿½ Copyright 2017 Aritz Beobide-Cardinal All rights reserved.
 
 -- TODO: STOP MESSING WITH APP.Tiles and do the stuff properly!!
+-- TODO: Translation
 local APP = ARCPhone.NewAppObject()
 APP.Name = "Music"
 APP.Author = "ARitz Cracker"
@@ -21,6 +22,7 @@ local VisTileDraw = function(tile,x,y)
 end
 
 local PlayTileDraw = function(tile,x,y)
+            -- TODO: Translation
 	draw.SimpleText("Play URL", "ARCPhone", x+tile.w*0.5, y+tile.h*0.5, tile.App.Phone.Settings.Personalization.CL_03_MainText, TEXT_ALIGN_CENTER,TEXT_ALIGN_CENTER) 
 end
 
@@ -32,6 +34,7 @@ function APP:Init()
 	self.VisTile.color = self.Phone.Settings.Personalization.CL_01_MainColour
 	
 	self.URLTile = self:CreateNewTileTextInput(5,54,130,14,"",false)
+            -- TODO: Translation
 	self.URLTile:SetPlaceholder("Enter MP3 URL")
 	self.URLTile:SetValue("https://www.aritzcracker.ca/random_shit/music/Drunk%20Girl/Drunk%20Girl%20-%20Don't%20Stop%20The%20Party%20(Feat.%20Deanna).mp3")
 	self.URLTile.SingleLine = true
@@ -67,6 +70,7 @@ function APP:PlayURL(url)
 			self.PlayingSong:Play()
 			self.PlayingSong:SetVolume(0.25)
 		else
+            -- TODO: Translation
 			ARCPhone.PhoneSys:AddMsgBox("Music","Failed to play music\n("..tostring(errid)..") "..tostring(errstr),"warning-sign")
 		end
 	end)
