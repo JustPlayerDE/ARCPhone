@@ -30,7 +30,7 @@ if ARCPhone then
 			local MainPanel = vgui.Create( "DFrame" )
 			MainPanel:SetSize( 232, 245 )
 			MainPanel:Center()
-			MainPanel:SetTitle( ARCPhone.AdminMenu.EmergencyNumbers )
+			MainPanel:SetTitle( ARCPhone.Msgs.AdminMenu.EmergencyNumbers )
 			MainPanel:SetVisible( true )
 			MainPanel:SetDraggable( true )
 			MainPanel:ShowCloseButton( true )
@@ -52,12 +52,12 @@ if ARCPhone then
 			TeamDown.DoClick=function()
 				local i = TeamList:GetSelectedLine()
 				if i == nil then
-					Derma_Message( ARCPhone.AdminMenu.NoTeamError, "TeamList:GetSelectedLine() == nil", "OK" )
+					Derma_Message( ARCPhone.Msgs.AdminMenu.NoTeamError, "TeamList:GetSelectedLine() == nil", "OK" )
 					return
 				end
 				local teams = tab[selectedNumber]
 				if not teams then
-					Derma_Message( ARCPhone.AdminMenu.NoNumberError, "tab[selectedNumber] == nil", "OK" )
+					Derma_Message( ARCPhone.Msgs.AdminMenu.NoNumberError, "tab[selectedNumber] == nil", "OK" )
 					return
 				end
 				if i >= #teams then
@@ -81,12 +81,12 @@ if ARCPhone then
 			TeamUp.DoClick=function()
 				local i = TeamList:GetSelectedLine()
 				if i == nil then
-					Derma_Message( ARCPhone.AdminMenu.NoTeamError, "TeamList:GetSelectedLine() == nil", "OK" )
+					Derma_Message( ARCPhone.Msgs.AdminMenu.NoTeamError, "TeamList:GetSelectedLine() == nil", "OK" )
 					return
 				end
 				local teams = tab[selectedNumber]
 				if not teams then
-					Derma_Message( ARCPhone.AdminMenu.NoNumberError, "tab[selectedNumber] == nil", "OK" )
+					Derma_Message( ARCPhone.Msgs.AdminMenu.NoNumberError, "tab[selectedNumber] == nil", "OK" )
 					return
 				end
 				if i <= 1 then
@@ -104,17 +104,17 @@ if ARCPhone then
 			
 			
 			local TeamAdd = vgui.Create( "DButton", MainPanel )
-			TeamAdd:SetText(ARCPhone.AdminMenu.AddTeam)
+			TeamAdd:SetText(ARCPhone.Msgs.AdminMenu.AddTeam)
 			TeamAdd:SetPos( 35, 60+120+5)
 			TeamAdd:SetSize( 130+33, 20 )
 			TeamAdd.DoClick = function()			
 			local teams = tab[selectedNumber]
 			if not teams then
-				Derma_Message( ARCPhone.AdminMenu.NoNumberError, "tab[selectedNumber] == nil", "OK" )
+				Derma_Message( ARCPhone.Msgs.AdminMenu.NoNumberError, "tab[selectedNumber] == nil", "OK" )
 				return
 			end			
             -- TODO: Translation
-				Derma_StringRequest(ARCPhone.AdminMenu.AddTeam,"Enter the new team to add.","",function( text ) 
+				Derma_StringRequest(ARCPhone.Msgs.AdminMenu.AddTeam,"Enter the new team to add.","",function( text ) 
 					text = text:Trim()
 					if text == "" then return end
 					teams[#teams + 1] = text
@@ -123,18 +123,18 @@ if ARCPhone then
 			end
 			
 			local TeamRm = vgui.Create( "DButton", MainPanel )
-			TeamRm:SetText( ARCPhone.AdminMenu.RemoveTeam )
+			TeamRm:SetText( ARCPhone.Msgs.AdminMenu.RemoveTeam )
 			TeamRm:SetPos( 35, 60+120+30)
 			TeamRm:SetSize( 130+33, 20 )
 			TeamRm.DoClick = function()
 				local i = TeamList:GetSelectedLine()
 				if i == nil then
-					Derma_Message( ARCPhone.AdminMenu.NoTeamError, "TeamList:GetSelectedLine() == nil", "OK" )
+					Derma_Message( ARCPhone.Msgs.AdminMenu.NoTeamError, "TeamList:GetSelectedLine() == nil", "OK" )
 					return
 				end
 				local teams = tab[selectedNumber]
 				if not teams then
-					Derma_Message( ARCPhone.AdminMenu.NoNumberError, "tab[selectedNumber] == nil", "OK" )
+					Derma_Message( ARCPhone.Msgs.AdminMenu.NoNumberError, "tab[selectedNumber] == nil", "OK" )
 					return
 				end
 				table.remove( teams, TeamList:GetSelectedLine() )
@@ -188,7 +188,7 @@ if ARCPhone then
 					selectedNumber = numberList[index]
 					local teams = tab[selectedNumber]
 					if not teams then
-						Derma_Message( ARCPhone.AdminMenu.NoNumberError, "tab[selectedNumber] == nil", "OK" )
+						Derma_Message( ARCPhone.Msgs.AdminMenu.NoNumberError, "tab[selectedNumber] == nil", "OK" )
 						return
 					end
 					TeamList:Clear()
@@ -207,7 +207,7 @@ if ARCPhone then
 			Delete.DoClick = function()
 				--selectedNumber = numberList[index]
 				if not tab[selectedNumber] then
-					Derma_Message( ARCPhone.AdminMenu.NoNumberError, "tab[selectedNumber] == nil", "OK" )
+					Derma_Message( ARCPhone.Msgs.AdminMenu.NoNumberError, "tab[selectedNumber] == nil", "OK" )
 					return
 				end
 				TeamList:Clear()
@@ -294,7 +294,7 @@ if ARCPhone then
 			end
 
 			local AccountsButton = vgui.Create( "DComboBox", MainMenu )
-			AccountsButton:SetText( ARCPhone.AdminMenu.AdvancedSettings )
+			AccountsButton:SetText( ARCPhone.Msgs.AdminMenu.AdvancedSettings )
 			AccountsButton:SetPos( 10, 60 )
 			AccountsButton:SetSize( 180, 20 )
 			for i=1,#tab do 
@@ -302,18 +302,18 @@ if ARCPhone then
 			end
 			function AccountsButton:OnSelect(index,value,data)
 				RunConsoleCommand( "arcphone","admin_gui","adv",value)
-				AccountsButton:SetText( ARCPhone.AdminMenu.AdvancedSettings )
+				AccountsButton:SetText( ARCPhone.Msgs.AdminMenu.AdvancedSettings )
 			end
 			
 			local SettingsButton = vgui.Create( "DButton", MainMenu )
-			SettingsButton:SetText( ARCPhone.AdminMenu.Settings )
+			SettingsButton:SetText( ARCPhone.Msgs.AdminMenu.Settings )
 			SettingsButton:SetPos( 10, 90 )
 			SettingsButton:SetSize( 180, 20 )
 			SettingsButton.DoClick = function()	
 				ARCLib.AddonConfigMenu("ARCPhone","arcphone")
 			end
 			local CommandButton = vgui.Create( "DButton", MainMenu )
-			CommandButton:SetText( ARCPhone.AdminMenu.Commands )
+			CommandButton:SetText( ARCPhone.Msgs.AdminMenu.Commands )
 			CommandButton:SetPos( 10, 120 )
 			CommandButton:SetSize( 180, 20 )
 			CommandButton.DoClick = function()		
